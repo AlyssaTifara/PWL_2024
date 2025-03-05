@@ -34,10 +34,11 @@ Route::get('/posts/{post}/comments/{comment}', function ($postId, $commentId) {
     return 'Pos ke-' . $postId . ' Komentar ke-' . $commentId;
 });
 
+Route::resource('posts', PostController::class);
+
 // Route dengan prefix
 Route::prefix('admin')->group(function () {
     Route::get('/user', [UserController::class, 'index']);
-    Route::get('/post', [PostController::class, 'index']);
     Route::get('/event', [EventController::class, 'index']);
 });
 
@@ -49,7 +50,6 @@ Route::middleware('auth')->group(function () {
 });
 
 // Route untuk profile
-Route::get('/user/profile', [UserProfileController::class, 'show'])->name('profile');
 
 // Redirect dan view
 Route::redirect('/here', '/there');
@@ -61,3 +61,11 @@ Route::domain('{account}.example.com')->group(function () {
         return "Akun: $account, User ID: $id";
     });
 });
+
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+]);
+
+Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+]);
