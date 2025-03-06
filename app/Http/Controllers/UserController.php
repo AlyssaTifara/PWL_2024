@@ -15,5 +15,8 @@ class UserController extends Controller
     {
         return view('POS.user');
     }
-
+    public function showUser()
+    {
+        return view('user');
+    }
 }

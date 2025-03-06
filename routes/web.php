@@ -1,20 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PenjualanController;
+
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
 
 // Route dasar
-Route::get('/', function () {
-    return 'Selamat Datang';
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/world', function () {
     return 'World';
@@ -71,3 +72,15 @@ Route::resource('photos', PhotoController::class)->except([
 ]);
 
 Route::get('/greeting', [WelcomeController::class, 'greeting']);
+
+Route::prefix('category')->group(function () {
+    Route::get('/{category}', [ProductController::class, 'showCategory']);
+});
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/kategori', [ProductController::class, 'showCategory']);
+
+Route::get('/penjualan', [PenjualanController::class, 'showPenjualan']);
+
+Route::get('/userPOS', [UserController::class, 'showUser']);
