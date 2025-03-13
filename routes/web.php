@@ -9,13 +9,19 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\LevelController;
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/level', [LevelController::class, 'index']);
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
 
 // Route dasar
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/world', function () {
     return 'World';
