@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use App\Models\UserModel;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
+use App\Models\UserModel;
+use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class UserController extends Model
 {
     public function index()
     {
@@ -18,19 +20,15 @@ class UserController extends Controller
             'username' => 'customer-1',
             'nama' => 'Pelanggan',
             'password' => Hash::make('12345'),
-            'level_id' => 5
+            'level_id' => 4
         ];
 
         UserModel::insert($data);
         $user = UserModel::all();
         return view('user', ['data' => $user]);
     }
-    public function user()
-    {
-        return view('POS.user');
-    }
-    public function showUser()
-    {
-        return view('user');
-    }
+    
+    // use HasFactory;
+    // protected $table = 'm_user';
+    // protected $primaryKey = 'user_id';
 }

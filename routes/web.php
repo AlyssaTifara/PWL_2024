@@ -18,12 +18,8 @@ Route::get('/', function () {
 
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/level', [LevelController::class, 'index']);
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
@@ -57,25 +53,25 @@ Route::prefix('admin')->group(function () {
     Route::get('/event', [EventController::class, 'index']);
 });
 
-// Route dengan middleware
-Route::middleware('auth')->group(function () {
-    Route::get('/user', [UserController::class, 'index']);
-    Route::get('/post', [PostController::class, 'index']);
-    Route::get('/event', [EventController::class, 'index']);
-});
+// // Route dengan middleware
+// Route::middleware('auth')->group(function () {
+//     Route::get('/user', [UserController::class, 'index']);
+//     Route::get('/post', [PostController::class, 'index']);
+//     Route::get('/event', [EventController::class, 'index']);
+// });
 
-// Route untuk profile
+// // Route untuk profile
 
-// Redirect dan view
-Route::redirect('/here', '/there');
-Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+// // Redirect dan view
+// Route::redirect('/here', '/there');
+// Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
-// Route dengan subdomain
-Route::domain('{account}.example.com')->group(function () {
-    Route::get('user/{id}', function ($account, $id) {
-        return "Akun: $account, User ID: $id";
-    });
-});
+// // Route dengan subdomain
+// Route::domain('{account}.example.com')->group(function () {
+//     Route::get('user/{id}', function ($account, $id) {
+//         return "Akun: $account, User ID: $id";
+//     });
+// });
 
 Route::resource('photos', PhotoController::class)->only([
     'index', 'show'
