@@ -10,6 +10,14 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\KategoriController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/level', [LevelController::class, 'index']);
+Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::get('/', function () {
     return view('welcome');
@@ -85,7 +93,7 @@ Route::prefix('category')->group(function () {
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/kategori', [ProductController::class, 'showCategory']);
+// Route::get('/kategori', [ProductController::class, 'showCategory']);
 
 Route::get('/penjualan', [PenjualanController::class, 'showPenjualan']);
 

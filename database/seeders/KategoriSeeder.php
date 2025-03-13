@@ -41,6 +41,6 @@ class KategoriSeeder extends Seeder
                 'kategori_nama' => 'Olahraga'
             ],
         ];
-        DB::table('m_kategoris')->insert($data);
+        DB::table('m_kategori')->insert($data);
     }
 }
