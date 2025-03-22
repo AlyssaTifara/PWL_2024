@@ -10,27 +10,35 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $breadcrumb = (object) [
-            'title' => 'Daftar User',
-            'list'  => ['Home', 'User']
-        ];
+    // Menampilkan halaman awal user
+public function index()
+{
+    $breadcrumb = (object) [
+        "title" => "Daftar User",
+        "list"  => ["Home", "User"]
+    ];
 
-        $page = (object) [
-            'title' => 'Daftar user yang terdaftar dalam sistem'
-        ];
+    $page = (object) [
+        "title" => "Daftar user yang terdaftar dalam sistem"
+    ];
 
-        $activeMenu = 'user'; // set menu yang sedang aktif
+    $activeMenu = "user"; // set menu yang sedang aktif
 
-        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
-    }
+    $level = LevelModel::all(); // ambil data level untuk filter level
+
+    return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
+}
     
     //Ambil data user dalam bentuk json untuk datatables
-public function list(Request $request)
-{
+    public function list(Request $request)
+    {
     $user = UserModel::select('user_id', 'username', 'nama', 'level_id')
                         ->with('level');
+
+    // Filter data user berdasarkan level_id
+    if ($request->level_id) {
+        $user->where('level_id', $request->level_id);
+    }
 
     return DataTables::of($user)
         // menambahkan kolom index / no urut (default nama kolom: DT_RowIndex)
