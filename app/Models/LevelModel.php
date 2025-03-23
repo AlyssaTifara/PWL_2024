@@ -12,5 +12,10 @@ class LevelModel extends Model
     protected $table = 'm_level';
     protected $primaryKey = 'level_id';
 
-    protected $fillable = ['level_name'];
+    public $timestamps = false;// Jika tabel tidak memiliki created_at dan updated_at
+
+    protected $fillable = [
+        'level_kode',
+        'level_nama'
+    ];
 }
