@@ -12,6 +12,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\BarangController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
@@ -77,6 +78,16 @@ Route::put('/{id}/update_ajax', [SupplierController::class, 'update_ajax']);
 // Delete dengan ajax
 Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);
 Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
+
+// Create dengan ajax
+Route::get('/create_ajax', [BarangController::class, 'create_ajax']);
+Route::post('/ajax', [BarangController::class, 'store_ajax']);
+// Edit dengan ajax
+Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']);
+Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']);
+// Delete dengan ajax
+Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']);
+Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']);
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
