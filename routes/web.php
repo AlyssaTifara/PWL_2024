@@ -46,6 +46,15 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/tambah', [UserController::class, 'tambah']);
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+// Create dengan ajax
+Route::get('/create_ajax', [LevelController::class, 'create_ajax']); // menampilkan halaman form tambah level ajax
+Route::post('/ajax', [LevelController::class, 'store_ajax']); // menyimpan data level baru ajax
+// Edit dengan ajax
+Route::get('/{id}/edit_ajax', [LevelController::class, 'edit_ajax']); // menampilkan halaman form edit level ajax
+Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']); // menyimpan perubahan data level ajax
+// Delete dengan ajax
+Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']); //menampilkan form confirm delete level ajax
+Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // menghapus data level ajax
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
