@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\SupplierController;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
@@ -42,10 +43,11 @@ Route::group(['prefix' => 'user'], function(){
 Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 Route::get('/user', [UserController::class, 'index']);
-// Route::get('/supplier', [SupplierController::class, 'index']);
+Route::get('/supplier', [SupplierController::class, 'index']);
 Route::get('/user/tambah', [UserController::class, 'tambah']);
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
 Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
 // Create dengan ajax
 Route::get('/create_ajax', [LevelController::class, 'create_ajax']); // menampilkan halaman form tambah level ajax
 Route::post('/ajax', [LevelController::class, 'store_ajax']); // menyimpan data level baru ajax
@@ -55,6 +57,26 @@ Route::put('/{id}/update_ajax', [LevelController::class, 'update_ajax']); // men
 // Delete dengan ajax
 Route::get('/{id}/delete_ajax', [LevelController::class, 'confirm_ajax']); //menampilkan form confirm delete level ajax
 Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // menghapus data level ajax
+
+// Create dengan ajax
+Route::get('/create_ajax', [KategoriController::class, 'create_ajax']); // menampilkan halaman form tambah kategori ajax
+Route::post('/ajax', [KategoriController::class, 'store_ajax']); // menyimpan data kategori baru ajax
+// Edit dengan ajax
+Route::get('/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']); // menampilkan halaman form edit kategori ajax
+Route::put('/{id}/update_ajax', [KategoriController::class, 'update_ajax']); // menyimpan perubahan data kategori ajax
+// Delete dengan ajax
+Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']); //menampilkan form confirm delete kategori ajax
+Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // menghapus data kategori ajax
+
+// Create dengan ajax
+Route::get('/create_ajax', [SupplierController::class, 'create_ajax']);
+Route::post('/ajax', [SupplierController::class, 'store_ajax']);
+// Edit dengan ajax
+Route::get('/{id}/edit_ajax', [SupplierController::class, 'edit_ajax']);
+Route::put('/{id}/update_ajax', [SupplierController::class, 'update_ajax']);
+// Delete dengan ajax
+Route::get('/{id}/delete_ajax', [SupplierController::class, 'confirm_ajax']);
+Route::delete('/{id}/delete_ajax', [SupplierController::class, 'delete_ajax']);
 
 // Resource Controller
 Route::resource('photos', PhotoController::class);
