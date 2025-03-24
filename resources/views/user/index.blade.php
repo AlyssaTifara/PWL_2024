@@ -63,13 +63,17 @@
 
     var dataUser;
     $(document).ready(function() {
+        if ($.fn.DataTable.isDataTable('#table_user')) {
+            $('#table_user').DataTable().destroy();
+        }
+        
         dataUser = $('#table_user').DataTable({
             serverSide: true,
             ajax: {
                 url: "{{ url('user/list') }}",
                 dataType: "json",
                 type: "POST",
-                "data" : function(d) {
+                data: function(d) {
                     d.level_id = $('#level_id').val();
                 }
             },
@@ -100,13 +104,15 @@
                     orderable: false,
                     searchable: false
                 }
-            ]
+            ],
+            language: {
+                url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Indonesian.json"
+            }
         });
 
         $('#level_id').on('change', function(){
             dataUser.ajax.reload();
         });
-
     });
 </script>
 @endpush

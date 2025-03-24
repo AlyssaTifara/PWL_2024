@@ -83,12 +83,14 @@
     <script src="{{ asset('adminlte2/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('adminlte2/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
-    {{-- jQuery Validation --}}
+
+    <!-- jquery-validation -->
     <script src="{{ asset('adminlte2/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
     <script src="{{ asset('adminlte2/plugins/jquery-validation/additional-methods.min.js') }}"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('adminlte2/plugins/sweetalert2/sweetalert2.min.css')}}"></script>
 
-    {{-- SweetAlert2 --}}
-    <script src="{{ asset('adminlte2/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte2/dist/js/adminlte.min.js') }}"></script>
 
