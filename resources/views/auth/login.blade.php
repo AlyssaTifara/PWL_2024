@@ -26,7 +26,7 @@
         <form action="{{ url('login') }}" method="POST" id="form-login">
             @csrf
             <div class="input-group mb-3">
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username">
+            <input type="text" id="nama" name="nama" class="form-control" placeholder="nama">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
