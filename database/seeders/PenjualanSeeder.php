@@ -78,6 +78,6 @@ class PenjualanSeeder extends Seeder
             ],
         ];
 
-        DB::table('t_penjualans')->insert($data);
+        DB::table('t_penjualan')->insert($data);
     }
 }
