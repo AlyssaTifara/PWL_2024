@@ -18,9 +18,14 @@ use App\Http\Controllers\AuthController;
 
 Route:: pattern('id','[0-9]+'); // artinya ketika ada parameter {id}, maka harus berupa angka
 
+// Login
 Route:: get('login', [AuthController::class,'login' ])->name('login' );
 Route:: post('login', [AuthController:: class, 'postlogin' ]);
 Route:: get('logout', [AuthController:: class, 'logout' ])->middleware('auth' );
+
+// Form Register
+Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route:: post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
 
 Route:: middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
 
