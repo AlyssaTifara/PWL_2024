@@ -1,0 +1,16 @@
+"barang_id","kategori_id","barang_kode","nama_barang","harga_beli","harga_jual","created_at","updated_at"
+"1","1","BRG001","BMW M4","2650000000","2700000000",NULL,NULL
+"2","1","BRG002","Hyundai Palisade","1000000000","1500000000",NULL,NULL
+"3","1","BRG003","Toyota Camry","1000000000","1200000000",NULL,NULL
+"4","2","BRG004","Ralph Lauren Polo Shirt","1500000","1700000",NULL,NULL
+"5","2","BRG005","H&M Polo Shirt","500000","700000",NULL,NULL
+"6","2","BRG006","Adidas T-Shirt","300000","400000",NULL,NULL
+"7","3","BRG007","Levis Jeans","2500000","2700000",NULL,NULL
+"8","3","BRG008","Ankle Pants","800000","1000000",NULL,NULL
+"9","3","BRG009","Nike Joggers","600000","800000",NULL,NULL
+"10","4","BRG010","Yamaha XSR 155","37000000","40000000",NULL,NULL
+"11","4","BRG011","Ducati","450000","500000",NULL,NULL
+"12","4","BRG012","Honda CBR 150","30000000","35000000",NULL,NULL
+"13","5","BRG013","Garmin Smartwatch","5000000","4535000",NULL,NULL
+"14","5","BRG014","Nike Air Jordan 4","3535000","4000000",NULL,NULL
+"15","5","BRG015","Puma Running Shoes","1200000","1500000",NULL,NULL

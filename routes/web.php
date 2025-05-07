@@ -60,6 +60,26 @@ Route::middleware(['authorize:ADM,MNG'])->group(function(){
     Route::delete('/barang/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); // ajax delete
 });
 
+Route::middleware(['auth', 'authorize:ADM,MNG'])->prefix('barang')->group(function () {
+    Route::get('/', [BarangController::class, 'index']);
+    Route::post('/list', [BarangController::class, 'list']);
+    Route::get('/create', [BarangController::class, 'create']);
+    Route::post('/', [BarangController::class, 'store']);
+    Route::get('/create_ajax', [BarangController::class, 'create_ajax']);
+    Route::post('/ajax', [BarangController::class, 'store_ajax']);
+    Route::get('/{id}', [BarangController::class, 'show']);
+    Route::get('/{id}/edit', [BarangController::class, 'edit']);
+    Route::put('/{id}', [BarangController::class, 'update']);
+    Route::get('/{id}/edit_ajax', [BarangController::class, 'edit_ajax']); //menampilkan halaman form edit Barang ajax
+    Route::put('/{id}/update_ajax', [BarangController::class, 'update_ajax']); //menyimpan perubahan data Barang ajax
+    Route::get('/{id}/delete_ajax', [BarangController::class, 'confirm_ajax']); //untuk menampilkan form confirm delete Barang ajax
+    Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); //menghapus data Barang ajax
+    Route::delete('/{id}', [BarangController::class, 'destroy']);
+    Route::get('/import', [BarangController::class, 'import']);
+    Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
+    Route::get('/export_excel', [BarangController::class, 'export_excel']);
+});
+
 
 Route::group(['prefix' => 'user'], function(){
     Route::get('/', [UserController::class, 'index']); //menampilkan halamann awal user
