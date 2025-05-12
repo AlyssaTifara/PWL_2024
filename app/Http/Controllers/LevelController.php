@@ -7,6 +7,7 @@ use App\Models\LevelModel; // Import LevelModel
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LevelController extends Controller
 {

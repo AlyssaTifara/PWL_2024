@@ -27,6 +27,10 @@ Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route:: post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
 
+// Profile
+Route::get('profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
+Route::post('profile/update', [AuthController::class, 'update'])->middleware('auth');
+
 Route:: middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
 
 Route::get('/', [WelcomeController::class, 'index']);
@@ -77,7 +81,8 @@ Route::middleware(['auth', 'authorize:ADM,MNG'])->prefix('barang')->group(functi
     Route::delete('/{id}', [BarangController::class, 'destroy']);
     Route::get('/import', [BarangController::class, 'import']);
     // Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
-    Route::get('/export', [BarangController::class, 'export']);
+    Route::get('/export', [BarangController::class, 'export']); //export excel
+    Route::get('/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
 });
 
 

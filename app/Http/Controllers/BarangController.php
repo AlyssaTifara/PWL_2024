@@ -6,10 +6,12 @@ use App\Models\LevelModel;
 use App\Models\BarangModel;
 use App\Models\KategoriModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Yajra\DataTables\Facades\DataTables;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Date;
 
 class BarangController extends Controller
 {
@@ -198,5 +200,28 @@ class BarangController extends Controller
         return response()->streamDownload(function() use ($writer) {
             $writer->save('php://output');
         }, $filename);
+    }
+
+    public function export_pdf()
+    {
+        $barang = BarangModel::select("kategori_id", "barang_kode", "nama_barang", "harga_beli", "harga_jual")
+            ->orderBy('kategori_id')
+            ->orderBy('barang_kode')
+            ->with('kategori')
+            ->get();
+        
+        // user Barryvdh\DomPDF\Facade\Pdf;
+        // $pdf = Pdf::loadView('barang.export_pdf', ['barang' => $barang]);
+        // $pdf->setPaper('a4', 'potrait'); // set ukuran kertas dan orientasi potrait
+        // $pdf->setOption("isRemoteEnabled", true); // set true jika ada gambar dari url
+        // $pdf->render();
+
+        $pdf = Pdf::loadView('barang.export_pdf', ['barang' => $barang]);
+        $pdf->setPaper('a4', 'potrait');
+        $pdf->setOption("isRemoteEnabled", true);
+        set_time_limit(300); // tambahkan ini
+
+        
+        return $pdf->download('Data Barang ' . date("Y-m-d H:i:s") . '.pdf');
     }
 }
