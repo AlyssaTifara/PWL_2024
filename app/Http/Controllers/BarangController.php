@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Yajra\DataTables\Facades\DataTables;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class BarangController extends Controller
 {
@@ -154,6 +155,10 @@ class BarangController extends Controller
 
     public function export()
     {
+        // $barang = BarangModel::select('barang_id', 'kategori_id', 'barang_kode', 'nama_barang', 'harga_beli', 'harga_jual')
+        // ->orderBy('kategoti_id')
+        // ->with('kategori')
+        // ->get();
         $barang = BarangModel::with('kategori')
             ->orderBy('kategori_id')
             ->get();

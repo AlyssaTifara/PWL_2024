@@ -19,9 +19,9 @@ use App\Http\Controllers\AuthController;
 Route:: pattern('id','[0-9]+'); // artinya ketika ada parameter {id}, maka harus berupa angka
 
 // Login
-Route:: get('login', [AuthController::class,'login' ])->name('login' );
-Route:: post('login', [AuthController:: class, 'postlogin' ]);
-Route:: get('logout', [AuthController:: class, 'logout' ])->middleware('auth' );
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('login', [AuthController::class, 'postlogin']);
+Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // Form Register
 Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
@@ -76,8 +76,8 @@ Route::middleware(['auth', 'authorize:ADM,MNG'])->prefix('barang')->group(functi
     Route::delete('/{id}/delete_ajax', [BarangController::class, 'delete_ajax']); //menghapus data Barang ajax
     Route::delete('/{id}', [BarangController::class, 'destroy']);
     Route::get('/import', [BarangController::class, 'import']);
-    Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
-    Route::get('/export_excel', [BarangController::class, 'export_excel']);
+    // Route::post('/import_ajax', [BarangController::class, 'import_ajax']);
+    Route::get('/export', [BarangController::class, 'export']);
 });
 
 

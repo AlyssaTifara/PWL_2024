@@ -62,6 +62,10 @@
     </div>
     <!-- ./wrapper -->
 
+    <!-- jquery-validation -->
+    <script src="{{ asset('adminlte2/plugins/jquery-validation/jquery.validate.js')}}"></script>
+    <script src="{{ asset('adminlte2/plugins/jquery-validation/additional-methods.min.js')}}"></script>
+
     <!-- jQuery -->
     <script src="{{ asset('adminlte2/plugins/jquery/jquery.min.js') }}"></script>
 
