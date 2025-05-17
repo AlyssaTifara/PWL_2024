@@ -85,6 +85,8 @@ Route::middleware(['auth', 'authorize:ADM,MNG'])->prefix('barang')->group(functi
     Route::get('/export_pdf', [BarangController::class, 'export_pdf']); // export pdf
 });
 
+Route::get('/barang/export_pdf', [BarangController::class, 'export_pdf']);
+
 
 Route::group(['prefix' => 'user'], function(){
     Route::get('/', [UserController::class, 'index']); //menampilkan halamann awal user
