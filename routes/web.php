@@ -24,8 +24,8 @@ Route::post('login', [AuthController::class, 'postlogin']);
 Route::get('logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // Form Register
-Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
-Route:: post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
+// Route:: get('register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+// Route:: post('register', [AuthController::class, 'postregister'])->name('postregister')->middleware('guest');
 
 // Profile
 Route::get('profile', [AuthController::class, 'profile'])->middleware('auth')->name('profile');
