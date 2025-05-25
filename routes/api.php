@@ -23,6 +23,7 @@ use App\Http\Controllers\Api\BarangController;
 */
 
 Route::post('/register', [RegisterController:: class, '__invoke'])->name('registers');
+Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
 Route::post('/login', [LoginController:: class, '__invoke'])->name('logins');
 Route::post('/logout', [LogoutController:: class, '__invoke'])->name('logouts');
 
