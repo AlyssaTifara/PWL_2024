@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\LogoutController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\PenjualanController;
 
 
 /*
@@ -54,6 +55,14 @@ Route::post('barang', [BarangController::class, 'store']);
 Route::get('barang/{id}', [BarangController::class, 'show']);
 Route::put('barang/{id}', [BarangController::class, 'update']);
 Route::delete('barang/{id}', [BarangController::class, 'destroy']);
+Route::delete('/barangs/{barang}', [BarangController::class, 'destroy']);
+
+// Route Transaksi
+Route::get('transaksi', [PenjualanController::class, 'index']);
+Route::get('transaksi/{transaksi}', [PenjualanController::class, 'show']);
+Route::post('transaksi', [PenjualanController::class, 'store']);
+Route::post('transaksi/{transaksi}', [PenjualanController::class, 'update']);
+Route::delete('transaksi/{transaksi}', [PenjualanController::class, 'destroy']);
 
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
